@@ -1,6 +1,7 @@
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 const calendar = google.calendar("v3");
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
