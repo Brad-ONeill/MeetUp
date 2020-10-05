@@ -52,11 +52,7 @@
         const getAuthURL = "https://6jhevv6op3.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
 
         getCodeElement.onclick = function () {
-            fetch(getAuthURL, {
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                    },
-                })
+            fetch(getAuthURL)
                 .then(function (response) {
                     return response.json();
                 })
@@ -77,11 +73,16 @@
         const getAccessToken = document.getElementById("getToken");
         const accessTokenElement = document.getElementById("accessToken");
         const getToken =
-            "https://6jhevv6op3.execute-api.eu-central-1.amazonaws.com/dev/api/token/{code}";
+            "https://6jhevv6op3.execute-api.eu-central-1.amazonaws.com/dev/api/token/";
 
         getAccessToken.onclick = function () {
             const getTokenRequest = getToken + codeValue.value;
-            fetch(getTokenRequest)
+            fetch(getTokenRequest, {
+                    mode: "no-cors"
+                    // headers: {
+                    //     "Access-Control-Allow-Origin": "*",
+                    // },
+                })
                 .then(function (response) {
                     return response.json();
                 })
