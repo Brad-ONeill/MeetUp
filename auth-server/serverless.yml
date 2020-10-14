@@ -29,8 +29,8 @@ functions:
 
   getCalendarEvents:
     handler: handler.getCalendarEvents
+    max_results: 32
     events:
       - http:
           path: api/get-events/{access_token},
-          max_results: 32
           method: get
