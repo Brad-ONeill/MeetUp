@@ -48,4 +48,14 @@ describe("<CitySearch /> component", () => {
       );
     }
   });
+
+  test("selecting a suggestion should change query state", () => {
+    const CitySearchWrapper = shallow(<CitySearch locations={locations} />);
+    CitySearchWrapper.setState({
+      suggestions: locations,
+    });
+
+    CitySearchWrapper.find(".suggestions li").at(0).simulate("click");
+    expect(CitySearchWrapper.state("query")).toBe("Berlin, Germany");
+  });
 });
