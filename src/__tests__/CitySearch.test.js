@@ -10,7 +10,7 @@ const locations = extractLocations(mockData);
 describe("<CitySearch /> component", () => {
   let CitySearchWrapper;
   beforeAll(() => {
-    CitySearchWrapper = shallow(<CitySearch />);
+    CitySearchWrapper = shallow(<CitySearch locations={locations} />);
   });
 
   test("render text input", () => {
@@ -50,7 +50,7 @@ describe("<CitySearch /> component", () => {
   });
 
   test("selecting a suggestion should change query state", () => {
-    const CitySearchWrapper = shallow(<CitySearch locations={locations} />);
+    // const CitySearchWrapper = shallow(<CitySearch locations={locations} />);
     CitySearchWrapper.setState({
       suggestions: locations,
     });
