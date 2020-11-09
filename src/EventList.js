@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import Event from "./Event";
 
-class Events extends Component {
-  state = {
-    events: [],
-  };
-}
-
 class EventList extends Component {
   state = {
     events: [],
