@@ -10,7 +10,9 @@ const locations = extractLocations(mockData);
 describe("<CitySearch /> component", () => {
   let CitySearchWrapper;
   beforeAll(() => {
-    CitySearchWrapper = shallow(<CitySearch locations={locations} />);
+    CitySearchWrapper = shallow(
+      <CitySearch locations={locations} updateEvents={() => {}} />
+    );
   });
 
   test("render text input", () => {
