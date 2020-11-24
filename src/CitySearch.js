@@ -1,23 +1,32 @@
 import React, { Component } from "react";
 
-import { extractLocations } from "./api";
-import { mockData } from "./mock-data";
-
 class CitySearch extends Component {
   state = {
-    locations: this.props.location,
+    // locations: this.props.location,
+    locations: [],
     query: "",
     suggestions: [],
   };
 
+  componentDidMount() {
+    this.setState({ locations: this.props.locations });
+  }
+
   handleInputChanged = (event) => {
     const value = event.target.value;
-    this.setState({ query: value });
+    const suggestions = this.props.locations.filter((location) => {
+      return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
+    });
+    this.setState({
+      query: value,
+      suggestions,
+    });
   };
-
-  handleItemClicked = (value) => {
-    this.setState({ query: value });
-  };
+  // handleInputChanged = (event) => {
+  //   const value = event.target.value;
+  //   this.setState({ query: value });
+  //   this.props.updateEvents(this.state.query);
+  // };
 
   handleItemClicked = (suggestion) => {
     this.setState({
