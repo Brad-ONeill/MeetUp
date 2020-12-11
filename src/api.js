@@ -10,8 +10,8 @@ const extractLocations = (events) => {
 
 const extractEvents = (events) => {
   var extractEvents = events.map((event) => event);
-  var uEvents = [...new Set(extractEvents)];
-  return uEvents;
+  var updatedEvents = [...new Set(extractEvents)];
+  return updatedEvents;
 };
 
 const removeQuery = () => {

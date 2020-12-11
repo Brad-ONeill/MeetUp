@@ -10,6 +10,7 @@ import { extractLocations, getEvents } from "./api";
 class App extends Component {
   state = {
     events: [],
+    numberOfEvents: 32,
     locations: [],
   };
 
@@ -29,7 +30,7 @@ class App extends Component {
     this.mounted = false;
   }
 
-  updateEvents = (location) => {
+  updateEvents = (location, eventCount) => {
     getEvents().then((events) => {
       const locationEvents =
         location === "all"
