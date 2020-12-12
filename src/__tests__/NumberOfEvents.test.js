@@ -5,7 +5,7 @@ import NumberOfEvents from "../NumberOfEvents";
 describe("<NumberOfEvents /> component", () => {
   let NumberOfEventsWrapper;
   beforeAll(() => {
-    NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    NumberOfEventsWrapper = shallow(<NumberOfEvents noOfEvents={32} handleEventAmount={() => { }} />);
   });
 
   test("render textbox element", () => {
@@ -13,23 +13,11 @@ describe("<NumberOfEvents /> component", () => {
   });
 
   test("render text input correctly", () => {
-    const noOfEvents = NumberOfEventsWrapper.state("noOfEvents");
-    expect(
-      NumberOfEventsWrapper.find("#NumberOfEvents_input").prop("value")
-    ).toBe(noOfEvents);
-  });
-
-  test("change state when input changes", () => {
-    const eventObject = { target: { value: 32 } };
-    NumberOfEventsWrapper.find("#NumberOfEvents_input").simulate(
-      "change",
-      eventObject
-    );
-    expect(NumberOfEventsWrapper.state("noOfEvents")).toBe(32);
+    expect(NumberOfEventsWrapper.find("#NumberOfEvents_input").props().value).toBe(32);
   });
 
   test("show number of events input label", () => {
-    expect(NumberOfEventsWrapper.find(".NumberOfEvents label")).toHaveLength(1);
+    expect(NumberOfEventsWrapper.find(".NumberOfEvents")).toHaveLength(1);
   });
 
   //no nodes found for test
